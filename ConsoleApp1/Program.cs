@@ -37,9 +37,10 @@ namespace ConsoleApp1
                     {
                         if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
                         {
-                            if (!string.IsNullOrEmpty(Convert.ToString(sheet.GetRow(row).GetCell(1))))
-                            {
+                            
                                 if (Convert.ToString(sheet.GetRow(2).GetCell(0))== "Approve")
+                                {
+                                if (!string.IsNullOrEmpty(Convert.ToString(sheet.GetRow(row).GetCell(1))))
                                 {
                                     DataRow _new = dt.NewRow();
                                     _new["Name"] = Convert.ToString(sheet.GetRow(0).GetCell(12));
@@ -53,6 +54,13 @@ namespace ConsoleApp1
                                 }
                                 else
                                 {
+                                    break;
+                                }
+                            }
+                                else
+                                {
+                                if (!string.IsNullOrEmpty(Convert.ToString(sheet.GetRow(row).GetCell(0))))
+                                {
                                     DataRow _new = dt.NewRow();
                                     _new["Name"] = Convert.ToString(sheet.GetRow(0).GetCell(12));
                                     _new["Date"] = ADDzero(Convert.ToString(sheet.GetRow(row).GetCell(0)));
@@ -63,12 +71,13 @@ namespace ConsoleApp1
                                     _new["Daily Approver"] = Convert.ToString(sheet.GetRow(row).GetCell(54));
                                     dt.Rows.Add(_new);
                                 }
+                                else
+                                {
+                                    break;
+                                }
+                            }
                                 
-                            }
-                            else
-                            {
-                                break;
-                            }
+                            
                         }
                     }
                 }
